@@ -22,7 +22,7 @@ namespace KT_STUDIO_MANAGER
 
     public class polaczenie_z_baza
     {
-        protected string string_polaczeniowy = "Data Source=ktdbserver.database.windows.net;Initial Catalog=KT_DB;User ID=ktuser;Password=Wystawfakture071!";
+        protected string string_polaczeniowy = "Data Source=servername.database.windows.net;Initial Catalog=resource_name;User ID=user;Password=password!";
         public SqlConnection polaczenie;
         public bool polacz()
         {
