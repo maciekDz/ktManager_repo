@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KT_DB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ktdbserver.database.windows.net;Initial Catalog=KT_DB;User ID=ktuser;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="KT_STUDIO_MANAGER.Properties.Settings" SettingsPropertyName="KT_DBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Klienci" Member="Kliencis">
+    <Type Name="Klienci">
+      <Column Name="Nazwa1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Nazwa2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Nazwa3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Ulica" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="KodMiasto" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NIP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[E-mail]" Member="E_mail" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NazwaSkr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="KlientID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Aktywny" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FakturySprzedaz" Member="FakturySprzedazs">
+    <Type Name="FakturySprzedaz">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NrFaktury" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DataSprzedazy" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Dzien" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Miesiac" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Rok" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="KlientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Netto8" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Netto23" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Brutto8" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Brutto23" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Slownie" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FormaPlatnosci" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Termin" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="FakturySprzedaz_PozycjeFaktury" Member="PozycjeFakturies" ThisKey="NrFaktury" OtherKey="NrFaktury" Type="PozycjeFaktury" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Platnosc" Member="Platnoscs">
+    <Type Name="Platnosc">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Platność" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PozycjeFaktury" Member="PozycjeFakturies">
+    <Type Name="PozycjeFaktury">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NrFaktury" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Lp" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StVat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CenaNetto" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WartoscNetto" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WartoscVat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WartoscBrutto" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="FakturySprzedaz_PozycjeFaktury" Member="FakturySprzedaz" ThisKey="NrFaktury" OtherKey="NrFaktury" Type="FakturySprzedaz" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Qty" Member="Qties">
+    <Type Name="Qty">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Qty" Member="Qty1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StawkaVat" Member="StawkaVats">
+    <Type Name="StawkaVat">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[St VAT]" Member="St_VAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TerminPlatnosci" Member="TerminPlatnoscis">
+    <Type Name="TerminPlatnosci">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Termin" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Towary" Member="Towaries">
+    <Type Name="Towary">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NazwaTowaru" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
